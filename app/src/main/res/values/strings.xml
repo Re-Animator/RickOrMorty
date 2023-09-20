@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">RickOrMorty</string>
+
+    <string name="hello_characters_fragment">Characters fragment</string>
+    <string name="hello_episodes_fragment">Episodes fragment</string>
+    <string name="hello_locations_fragment">Locations fragment</string>
+
+    <string name="characters">Characters</string>
+    <string name="episodes">Episodes</string>
+    <string name="locations">Locations</string>
+
 </resources>
