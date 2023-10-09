@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.RickOrMorty" parent="Base.Theme.RickOrMorty" />
+
+    <style name="Theme.RickOrMorty.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/animated_splash_screen_scale</item>
+        <item name="windowSplashScreenAnimationDuration">3000</item>
+        <item name="postSplashScreenTheme">@style/Theme.RickOrMorty</item>
+    </style>
 </resources>
