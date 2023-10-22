@@ -9,4 +9,30 @@
     <string name="episodes">Episodes</string>
     <string name="locations">Locations</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="episode">Episode:</string>
+    <string name="air_date">Air date:</string>
+    <string name="type">Type:</string>
+    <string name="dimension">Dimension:</string>
+    <string name="no_residents_found">No residents found</string>
+    <string name="back">Back</string>
+    <string name="search_by_type">Search by type…</string>
+    <string name="no_internet_connection_data_won_t_be_up_to_date">No internet connection. Data won\'t be up-to-date</string>
+    <string name="no_data_found">No data found</string>
+    <string name="search">search</string>
+    <string name="filter">filter</string>
+    <string name="gender">Gender:</string>
+    <string name="status">Status:</string>
+    <string name="species">Species:</string>
+    <string name="origin">Origin:</string>
+    <string name="last_location">Last location:</string>
+    <string name="season">Season</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="apply">Apply</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

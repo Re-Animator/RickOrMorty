@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.episode.detail.EpisodeDetailFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="10dp"
+        app:strokeColor="@color/cardview_light_background"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceHeadline5"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="someName" />
+
+            <TextView
+                android:id="@+id/text_episode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/episode"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintBottom_toTopOf="@id/episode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name" />
+
+            <TextView
+                android:id="@+id/episode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/text_episode"
+                tools:text="S01E10" />
+
+            <TextView
+                android:id="@+id/text_air_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/air_date"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintBottom_toTopOf="@id/air_date"
+                app:layout_constraintEnd_toStartOf="@id/air_date" />
+
+            <TextView
+                android:id="@+id/air_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="December 2, 2013" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <include
+        android:id="@+id/list_item"
+        layout="@layout/fragment_list"/>
+</LinearLayout>

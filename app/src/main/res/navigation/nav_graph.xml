@@ -7,17 +7,92 @@
 
     <fragment
         android:id="@+id/characterListFragment"
-        android:name="com.reanimator.rickormorty.CharacterListFragment"
-        android:label="@string/characters"
-        tools:layout="@layout/fragment_character_list" />
+        android:name="com.reanimator.rickormorty.ui.character.list.CharacterListFragment"
+        android:label="Characters"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_characterListFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+        <action
+            android:id="@+id/action_characterListFragment_to_characterFilterFragment"
+            app:destination="@id/characterFilterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/locationsListFragment"
-        android:name="com.reanimator.rickormorty.LocationListFragment"
+        android:name="com.reanimator.rickormorty.ui.location.list.LocationListFragment"
         android:label="@string/locations"
-        tools:layout="@layout/fragment_locations_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_locationsListFragment_to_locationDetailFragment"
+            app:destination="@id/locationDetailFragment" />
+        <action
+            android:id="@+id/action_locationsListFragment_to_locationFilterFragment"
+            app:destination="@id/locationFilterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/episodesListFragment"
-        android:name="com.reanimator.rickormorty.EpisodeListFragment"
+        android:name="com.reanimator.rickormorty.ui.episode.list.EpisodeListFragment"
         android:label="@string/episodes"
-        tools:layout="@layout/fragment_episodes_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_episodesListFragment_to_episodeDetailFragment"
+            app:destination="@id/episodeDetailFragment" />
+        <action
+            android:id="@+id/action_episodesListFragment_to_episodeFilterFragment"
+            app:destination="@id/episodeFilterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.reanimator.rickormorty.ui.character.detail.CharacterDetailFragment"
+        android:label="Character Detail"
+        tools:layout="@layout/fragment_character_detail" >
+        <argument
+            android:name="character_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_characterDetailFragment_to_locationDetailFragment"
+            app:destination="@id/locationDetailFragment" />
+        <action
+            android:id="@+id/action_characterDetailFragment_to_episodeDetailFragment"
+            app:destination="@id/episodeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodeDetailFragment"
+        android:name="com.reanimator.rickormorty.ui.episode.detail.EpisodeDetailFragment"
+        android:label="Episode Detail"
+        tools:layout="@layout/fragment_episode_detail">
+        <argument
+            android:name="episode_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_episodeDetailFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationDetailFragment"
+        android:name="com.reanimator.rickormorty.ui.location.detail.LocationDetailFragment"
+        android:label="Location Detail"
+        tools:layout="@layout/fragment_location_detail">
+        <argument
+            android:name="location_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_locationDetailFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/characterFilterFragment"
+        android:name="com.reanimator.rickormorty.ui.character.CharacterFilterFragment"
+        android:label="fragment_character_filter"
+        tools:layout="@layout/fragment_character_filter" />
+    <dialog
+        android:id="@+id/episodeFilterFragment"
+        android:name="com.reanimator.rickormorty.ui.episode.EpisodeFilterFragment"
+        android:label="fragment_episode_filter"
+        tools:layout="@layout/fragment_episode_filter" />
+    <dialog
+        android:id="@+id/locationFilterFragment"
+        android:name="com.reanimator.rickormorty.ui.location.LocationFilterFragment"
+        android:label="fragment_location_filter"
+        tools:layout="@layout/fragment_location_filter" />
 </navigation>
