@@ -13,11 +13,9 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.reanimator.rickormorty.R
 import com.reanimator.rickormorty.databinding.FragmentListBinding
-import com.reanimator.rickormorty.ui.character.list.CharacterListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val APPEND_LOAD_ERROR_MESSAGE =
@@ -67,6 +65,10 @@ abstract class BaseListFragment() : Fragment() {
         ).show()
     }
 
+    protected open fun navigateToFilter() {
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -80,9 +82,7 @@ abstract class BaseListFragment() : Fragment() {
                 when (menuItem.itemId) {
                     R.id.filter -> {
                         binding.list.scrollToPosition(0)
-                        findNavController().navigate(
-                            CharacterListFragmentDirections.actionCharacterListFragmentToCharacterFilterFragment()
-                        )
+                        navigateToFilter()
                         return true
                     }
 

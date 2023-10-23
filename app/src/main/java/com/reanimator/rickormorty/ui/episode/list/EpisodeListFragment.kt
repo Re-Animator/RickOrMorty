@@ -65,6 +65,12 @@ class EpisodeListFragment : BaseListFragment() {
         }
     }
 
+    override fun navigateToFilter() {
+        findNavController().navigate(
+            EpisodeListFragmentDirections.actionEpisodesListFragmentToEpisodeFilterFragment()
+        )
+    }
+
     protected override fun setBottomBarLoadingState(loadState: LoadState?) {
         binding.appendProgress.isVisible = loadState is LoadState.Loading
     }

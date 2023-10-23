@@ -39,9 +39,9 @@ class LocationFilterFragment : DialogFragment() {
 
             override fun onQueryTextChange(searchedText: String?): Boolean {
                 if (!searchedText.isNullOrEmpty()) {
-                    viewModel.updateSearchQuery(searchedText)
+                    viewModel.updateTypeSearchQuery(searchedText)
                 } else {
-                    viewModel.updateSearchQuery(null)
+                    viewModel.updateTypeSearchQuery(null)
                 }
                 return true
             }

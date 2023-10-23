@@ -61,6 +61,12 @@ class CharacterListFragment : BaseListFragment() {
         }
     }
 
+    override fun navigateToFilter() {
+        findNavController().navigate(
+            CharacterListFragmentDirections.actionCharacterListFragmentToCharacterFilterFragment()
+        )
+    }
+
     override fun onSearchQueryTextChanged(newText: String?) {
         if (!newText.isNullOrEmpty()) {
             binding.list.scrollToPosition(0)
