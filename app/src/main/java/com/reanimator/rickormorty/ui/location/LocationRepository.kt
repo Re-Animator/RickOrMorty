@@ -1,5 +1,6 @@
 package com.reanimator.rickormorty.ui.location
 
+import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -18,7 +19,8 @@ import javax.inject.Inject
 
 class LocationRepository @Inject constructor(
     private val service: RickAndMortyApiService,
-    private val database: MortyDatabase
+    private val database: MortyDatabase,
+    private val context: Context
 ) {
     fun getLocationResultStream(filter: LocationFilter): Flow<PagingData<LocationData>> {
         val nameSearchQuery = filter.searchQuery
@@ -54,7 +56,7 @@ class LocationRepository @Inject constructor(
             config = PagingConfig(
                 pageSize = characterIdList?.count() ?: 0
             ),
-            pagingSourceFactory = { CharacterPagingSource(service, database, characterIdList) }
+            pagingSourceFactory = { CharacterPagingSource(service, database, characterIdList, context) }
         ).flow
     }
 

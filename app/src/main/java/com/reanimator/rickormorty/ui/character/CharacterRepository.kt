@@ -1,5 +1,6 @@
 package com.reanimator.rickormorty.ui.character
 
+import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -23,7 +24,8 @@ private const val LOCATION_BASE_URL = "https://rickandmortyapi.com/api/location/
 
 class CharacterRepository @Inject constructor(
     private val service: RickAndMortyApiService,
-    private val database: MortyDatabase
+    private val database: MortyDatabase,
+    private val context: Context
 ) {
     @Inject
     lateinit var connectivityObserver: NetworkConnectivityObserver
@@ -59,7 +61,7 @@ class CharacterRepository @Inject constructor(
             config = PagingConfig(
                 pageSize = episodeIdList.count()
             ),
-            pagingSourceFactory = { EpisodePagingSource(service, database, episodeIdList) }
+            pagingSourceFactory = { EpisodePagingSource(service, database, episodeIdList, context) }
         ).flow
     }
 

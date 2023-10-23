@@ -3,7 +3,6 @@ package com.reanimator.rickormorty.di
 import android.content.Context
 import com.reanimator.rickormorty.api.RickAndMortyApiService
 import com.reanimator.rickormorty.db.MortyDatabase
-import com.reanimator.rickormorty.observer.ConnectivityObserver
 import com.reanimator.rickormorty.observer.NetworkConnectivityObserver
 import com.reanimator.rickormorty.ui.character.CharacterRepository
 import com.reanimator.rickormorty.ui.episode.EpisodeRepository
@@ -52,39 +51,42 @@ object AppModule {
     @Singleton
     fun provideCharacterRepository(
         service: RickAndMortyApiService,
-        database: MortyDatabase
+        database: MortyDatabase,
+        @ApplicationContext context: Context
     ): CharacterRepository {
-        return CharacterRepository(service, database)
+        return CharacterRepository(service, database, context)
     }
 
     @Provides
     @Singleton
     fun provideEpisodeRepository(
         service: RickAndMortyApiService,
-        database: MortyDatabase
+        database: MortyDatabase,
+        @ApplicationContext context: Context
     ): EpisodeRepository {
-        return EpisodeRepository(service, database)
+        return EpisodeRepository(service, database, context)
     }
 
     @Provides
     @Singleton
     fun provideLocationRepository(
         service: RickAndMortyApiService,
-        database: MortyDatabase
+        database: MortyDatabase,
+        @ApplicationContext context: Context
     ): LocationRepository {
-        return LocationRepository(service, database)
+        return LocationRepository(service, database, context)
     }
-
-    @Provides
-    fun provideContext(application: RickAndMortyApplication): Context {
-        return application.applicationContext
-    }
+//
+//    @Provides
+//    fun provideContext(application: Application): Context {
+//        return application.applicationContext
+//    }
 
     @Provides
     @Singleton
     fun provideNetworkConnectivityObserver(
         @ApplicationContext context: Context
-    ): ConnectivityObserver {
+    ): NetworkConnectivityObserver {
         return NetworkConnectivityObserver(context)
     }
 }

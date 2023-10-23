@@ -8,5 +8,6 @@ class Constants {
         const val NETWORK_PAGE_SIZE = 20
         const val LOCATION_BASE_URL = "https://rickandmortyapi.com/api/location/"
         const val BASE_URl = "https://rickandmortyapi.com/api/"
+        const val ERROR_DOWNLOADING_APPEND = "Error occurred while downloading, check internet connection"
     }
 }

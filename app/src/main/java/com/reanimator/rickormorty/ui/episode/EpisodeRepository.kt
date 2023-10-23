@@ -1,5 +1,6 @@
 package com.reanimator.rickormorty.ui.episode
 
+import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -14,10 +15,12 @@ import com.reanimator.rickormorty.db.convertStringToNonNullIntList
 import com.reanimator.rickormorty.mediator.EpisodeRemoteMediator
 import com.reanimator.rickormorty.utils.Constants.Companion.NETWORK_PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class EpisodeRepository(
+class EpisodeRepository @Inject constructor(
     private val service: RickAndMortyApiService,
-    private val database: MortyDatabase
+    private val database: MortyDatabase,
+    private val context: Context
 ) {
     fun getEpisodeResultStream(filter: EpisodeFilter): Flow<PagingData<EpisodeData>> {
         val dbSearchQuery = if (filter.searchQuery == null) null else "%${filter.searchQuery}%"
@@ -52,7 +55,8 @@ class EpisodeRepository(
                 CharacterPagingSource(
                     service = service,
                     database = database,
-                    idList = characterIdList
+                    idList = characterIdList,
+                    context = context
                 )
             }
         ).flow

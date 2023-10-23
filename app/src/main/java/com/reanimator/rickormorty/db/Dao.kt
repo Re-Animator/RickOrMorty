@@ -44,7 +44,7 @@ interface CharacterDao {
     suspend fun getCharactersOriginId(characterId: Int): Int?
 
     @Query("SELECT * FROM characters WHERE id IN (:characterIdList)")
-    fun getCharacterListById(characterIdList: List<Int>): PagingSource<Int, CharacterData>
+    fun getCharacterListById(characterIdList: List<Int>): List<CharacterData>
 }
 
 @Dao
@@ -104,12 +104,11 @@ interface EpisodeDao {
         season: String?
     ): PagingSource<Int, EpisodeData>
 
-
     @Query("SELECT characters FROM episodes WHERE id LIKE :episodeId")
     suspend fun getEpisodeCharacters(episodeId: Int): String
 
     @Query("SELECT * FROM episodes WHERE id IN (:episodeIdList)")
-    fun getEpisodesListById(episodeIdList: List<Int>): PagingSource<Int, EpisodeData>
+    fun getEpisodesListById(episodeIdList: List<Int>): List<EpisodeData>
 
     @Query("DELETE FROM episodes")
     suspend fun clearEpisodes()

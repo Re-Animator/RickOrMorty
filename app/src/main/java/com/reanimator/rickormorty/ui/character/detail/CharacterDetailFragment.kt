@@ -17,12 +17,14 @@ import coil.load
 import com.reanimator.rickormorty.databinding.FragmentCharacterDetailBinding
 import com.reanimator.rickormorty.db.LocationData
 import com.reanimator.rickormorty.ui.episode.EpisodeAdapter
+import com.reanimator.rickormorty.utils.Constants.Companion.ERROR_DOWNLOADING_APPEND
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 private const val NO_LOCATION_MESSAGE = "There is no such location"
+private const val LOCATION_DEFAULT = "Unknown"
 
 @AndroidEntryPoint
 class CharacterDetailFragment : Fragment() {
@@ -60,10 +62,10 @@ class CharacterDetailFragment : Fragment() {
             }
         }
         viewModel.location.observe(viewLifecycleOwner) {
-            binding.location.text = it?.name ?: "Unknown"
+            binding.location.text = it?.name ?: LOCATION_DEFAULT
         }
         viewModel.origin.observe(viewLifecycleOwner) {
-            binding.origin.text = it?.name ?: "Unknown"
+            binding.origin.text = it?.name ?: LOCATION_DEFAULT
         }
 
         val adapter = EpisodeAdapter {
@@ -112,7 +114,7 @@ class CharacterDetailFragment : Fragment() {
                 if (it.mediator?.append is LoadState.Error) {
                     Toast.makeText(
                         requireContext(),
-                        "Error occurred while downloading, check internet connection",
+                        ERROR_DOWNLOADING_APPEND,
                         Toast.LENGTH_SHORT
                     ).show()
                 }

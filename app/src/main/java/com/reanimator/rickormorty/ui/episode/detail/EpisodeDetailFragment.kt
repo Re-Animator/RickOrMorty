@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import com.reanimator.rickormorty.databinding.FragmentEpisodeDetailBinding
 import com.reanimator.rickormorty.ui.character.CharacterAdapter
+import com.reanimator.rickormorty.utils.Constants.Companion.ERROR_DOWNLOADING_APPEND
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -94,7 +95,7 @@ class EpisodeDetailFragment : Fragment() {
                 if (it.mediator?.append is LoadState.Error) {
                     Toast.makeText(
                         requireContext(),
-                        "Error occurred while downloading, check internet connection",
+                        ERROR_DOWNLOADING_APPEND,
                         Toast.LENGTH_SHORT
                     ).show()
                 }

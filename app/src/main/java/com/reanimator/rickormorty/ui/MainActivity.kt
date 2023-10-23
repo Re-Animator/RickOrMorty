@@ -19,10 +19,12 @@ import com.reanimator.rickormorty.observer.NetworkConnectivityObserver
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var connectivityObserver: NetworkConnectivityObserver
+    @Inject
+    lateinit var connectivityObserver: NetworkConnectivityObserver
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -32,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val noInternetConnectionItem = findViewById<CardView>(R.id.no_internet_connection_field)
 
-        connectivityObserver = NetworkConnectivityObserver(this)
         connectivityObserver.observe().onEach {
             noInternetConnectionItem.isVisible = (it != ConnectivityObserver.Status.Available)
         }.launchIn(lifecycleScope)
